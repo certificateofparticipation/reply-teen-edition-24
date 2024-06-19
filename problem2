@@ -1,0 +1,111 @@
+# HELPER FUNCTIONS
+# Use these functions to quickly get your inputs from your input file,
+# and write your outputs to an output file.
+
+# The name of your input file.
+file_input_name = "input.txt"
+# The name of your output file.
+file_output_name = "output.txt"
+
+IGNORE_ME_file_input = open(file_input_name, 'r')
+IGNORE_ME_file_output = open(file_output_name, 'w')
+IGNORE_ME_file_output_storage = []
+
+# Get the next line from your input file.
+# You may optionally pass a string argument for debug print statements. This parameter can be skipped.
+# Example:
+# cases = input()
+# length = input("Length of the box")
+def input(ignored=None):
+    if ignored != None:
+        print("Reading {}".format(ignored))
+    return IGNORE_ME_file_input.readline().strip()
+
+# Write a string to your output file.
+# You must pass a string argument to be written to the file.
+# Example:
+# output("Case #{}: {}".format(case, result))
+def output(output):
+    print("Writing line: {}".format(output))
+    IGNORE_ME_file_output_storage.append(output + "\n")
+
+# Saves your output file and makes it ready for submission.
+# You must put this at the end of your code.
+# Do not pass any arguments.
+def submit():
+    IGNORE_ME_file_output_storage[-1] = IGNORE_ME_file_output_storage[-1].strip()
+    IGNORE_ME_file_output.writelines(IGNORE_ME_file_output_storage)
+    IGNORE_ME_file_output.close()
+    print("Saved and finished! Send your output file called {}".format(file_output_name))
+#
+# Good luck!
+# ----------------------------------------------------
+
+'''
+amin is min number of attempts in days
+amax is max number of attempts in days
+wmia is mia's weight
+wgenga is genga's weight
+lmia is length of mia's plot
+lgenga is length of genga's plot
+wmax is max truffle weight/day
+d is harvesting strat day
+
+Collect same amt of truffles/day
+harvest all truf
+w should not exceed wmax
+'''
+# YOUR CODE HERE!
+
+testcases = int(input())
+
+for _ in range(testcases):  # Loop through test cases
+    d = 0
+    wmia = 0
+    wgenga = 0
+    out = []
+    splitstats = input().split()
+    amin = int(splitstats[0])
+    amax = int(splitstats[1])
+    lmia = int(splitstats[2])
+    lgenga = int(splitstats[3])
+    wmax = int(splitstats[4])
+    miaplot = [int(x) for x in input().split()]  # Convert miaplot to integer list
+    gengaplot = [int(x) for x in input().split()]  # Convert gengaplot to integer list
+    def daily_harvest(d, out, miaplot, gengaplot):
+        for i in miaplot:
+            for j in gengaplot:
+                if i == j:
+                    print(i)
+                    out.extend([i, 0, i, 0, 0])
+                    print(out)
+                    d+=1
+                    miaplot.remove(i)
+                    gengaplot.remove(j)
+                    return
+        if len(miaplot) == 1 or len(gengaplot) == 1:
+            if len(miaplot) < len(gengaplot):
+                out.extend([sum(miaplot), 0, gengaplot[0], gengaplot[1], 0])
+                print(out)
+                d+=1
+            elif len(miaplot) > len(gengaplot):
+                out.extend([gengaplot[0], gengaplot[1], 0, sum(miaplot), 0])
+                print(out)
+                d+=1
+                    
+    for i in range(min(len(miaplot),len(gengaplot))):
+        print(str(i) + "time")
+        daily_harvest(d, out, miaplot, gengaplot)
+   
+
+
+    
+    #output("Case #{}: {}".format(_ + 1, out))
+    print("Case #{}: {}".format(_ + 1, out))
+        
+
+                    
+                    
+    
+
+# submit()
