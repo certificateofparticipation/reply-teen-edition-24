@@ -42,6 +42,26 @@ def submit():
 # ----------------------------------------------------
 
 '''
+
+The highly anticipated white truffle harvesting season has finally arrived!
+We have two truffles dogs, Mia and Genga, ready for the task, each assigned to a specific plot of land
+TM ia and TGenga containing numerous truffle trees. The two plot lands are represented as two list of
+non-negative integer of length LM ia and LGenga where each value consists in the weight of truffle in that
+position.
+The two truffles dogs will have to go in a harvesting season which can last in days between Amin and
+Amax included. During an harvesting day Mia and Genga can collect truffles from their respective plot
+of land TM ia and TGenga in any order. Once a truffle is harvested it won’t be availabe anymore for the
+next days in the season.
+To keep the truffle habitat sustainable, it’s s crucial that each dogs not exceed a designated total weight
+W for day of truffles, which must be consistent for both Mia and Genga. Moreover, for each day, both
+dogs must harvest the same total weight of truffles.
+Your goal is to find a possible configuration for the harvesting season, meaning to calculate a set of D
+harvesting days, with D between Amin and Amax included, to collect the entire quantity of truffles T
+available from both terrains and the order of collection for each day.
+For each harvesting day you are required indicate, for both Mia and Genga, the set of truffles from TM ia
+and TGenga harvested.
+Please note that different valid solution can exists, in this case it’s enough to return one of them.
+
 amin is min number of attempts in days
 amax is max number of attempts in days
 wmia is mia's weight
@@ -51,6 +71,7 @@ lgenga is length of genga's plot
 wmax is max truffle weight/day
 d is harvesting strat day
 
+Plan:
 Collect same amt of truffles/day
 harvest all truf
 w should not exceed wmax
